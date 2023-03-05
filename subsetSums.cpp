@@ -61,4 +61,10 @@ int main()
     }
     return 0;
 }
-// } Driver Code Ends
+
+// sample ip:
+// 3
+// 5 2 1
+    
+// sample op:
+// 0 1 2 3 5 6 7 8
