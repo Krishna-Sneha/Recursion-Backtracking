@@ -12,39 +12,34 @@
 // 7654321
 //   OR
 // 9863452
-
 #include<bits/stdc++.h>
 
 using namespace std;
 
-void helper(string str, int k, int ind, string&ans)
+void helper(string str, int k, int ind)
 {
-    string str1 =str;
-    int k1 = k;
-    int ind1= ind;
-    string ans1 = ans;
     
-    if(ind1 == k1)
+    if(ind == k)
     {
-        cout<<str1;
+        cout<<str;
         return;
     }
     
     int max = INT_MIN;
     int maxInd;
     
-    for(int i=ind1; i<str1.size(); i++)
+    for(int i=ind; i<str.size(); i++)
     {
-        if(str1[i]-'0' > max)
+        if(str[i]-'0' > max)
         {
-            max = str1[i]-'0';
+            max = str[i]-'0';
             maxInd = i;
         }
     }
     
     
-    swap(str1[maxInd], str1[ind1]);
-    helper(str1, k1, ind1+1, ans1);
+    swap(str[maxInd], str[ind]);
+    helper(str, k, ind+1);
     
     
 }
@@ -59,7 +54,5 @@ int main()
     cin>>str;
     cin>>k;
     
-    ans = str;
-    
-    helper(str, k, 0, ans);
+    helper(str, k, 0);
 }
