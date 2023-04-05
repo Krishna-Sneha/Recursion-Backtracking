@@ -12,47 +12,57 @@
 // 7654321
 //   OR
 // 9863452
-#include<bits/stdc++.h>
 
+//{ Driver Code Starts
+#include <bits/stdc++.h>
 using namespace std;
 
-void helper(string str, int k, int ind)
+class Solution
 {
+    public:
     
-    if(ind == k)
+    void helper(string&str, int k, int ind, string&ans)
     {
-        cout<<str;
-        return;
-    }
-    
-    int max = INT_MIN;
-    int maxInd;
-    
-    for(int i=ind; i<str.size(); i++)
-    {
-        if(str[i]-'0' > max)
+        ans = max(str, ans);
+        
+        if(k==0)
         {
-            max = str[i]-'0';
-            maxInd = i;
+            return;
+        }
+        
+        for(int j=ind; j<str.size()-1; j++)
+        {
+            for(int i=j+1; i<str.size(); i++)
+            {
+                if(str[i] > str[j])
+                {
+                    swap(str[j], str[i]);
+                    helper(str, k-1, ind+1, ans);
+                    swap(str[j], str[i]);
+                }
+            }    
         }
     }
     
-    
-    swap(str[maxInd], str[ind]);
-    helper(str, k, ind+1);
-    
-    
-}
+    string findMaximumNum(string str, int k)
+    {
+       string ans = "";
+       helper(str, k, 0, ans);
+       return ans;
+    }
+};
 
 int main()
 {
+    int t, k;
     string str;
-    string ans;
-    
-    int k;
-    
-    cin>>str;
-    cin>>k;
-    
-    helper(str, k, 0);
+
+    cin >> t;
+    while (t--)
+    {
+        cin >> k >> str;
+        Solution ob;
+        cout<< ob.findMaximumNum(str, k) << endl;
+    }
+    return 0;
 }
