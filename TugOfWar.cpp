@@ -47,19 +47,6 @@ void helper(int n, vector<int>&arr, vector<vector<int>>&ans, int ind)
                     minDiff = delta;
                     
                     res = ans;
-                    
-                    // cout<<"[";
-                    // for(int p1 : ans[0])
-                    // {
-                    //     cout<<p1<<",";
-                    // }
-                    // cout<<"] [";
-                    // for(int p2 : ans[1])
-                    // {
-                    //     cout<<p2<<",";
-                    // }
-                    // cout<<"]"<<endl;
-                        
                 }
             }
         }
