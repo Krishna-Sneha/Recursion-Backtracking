@@ -7,7 +7,7 @@ using namespace std;
 
 bool isSafePlace(vector<vector<int>> chess, int row, int col)
 {
-    for(int i=row-1, j=col; i>=0; i--)
+    for(int i=row-1, j=col && i>=0; i--)
     {
         if(chess[i][j] == 1)
             return false;
